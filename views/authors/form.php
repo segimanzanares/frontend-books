@@ -6,24 +6,34 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
-        <h1>Crear autor</h1>
-        <div>
-            <form id="form-author" action="/authors/form.php" method="POST">
-                <input type="hidden" name="action" value="store"/>
-                <div class="form-group">
-                    <label class="control-label">Nombre</label>
-                    <input type="text" class="form-control" name="first_name" autofocus/>
-                    <span class="invalid-feedback" role="alert"></span>
+        <div class="container">
+             <div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="card mt-5">
+                        <div class="card-header">
+                            <h5 class="card-title">Crear autor</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="form-author" action="/authors/form.php" method="POST">
+                                <input type="hidden" name="action" value="store"/>
+                                <div class="form-group">
+                                    <label class="control-label">Nombre</label>
+                                    <input type="text" class="form-control" name="first_name" autofocus/>
+                                    <span class="invalid-feedback" role="alert"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Apellidos</label>
+                                    <input type="text" class="form-control" name="last_name"/>
+                                    <span class="invalid-feedback" role="alert"></span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <button id="btn-save" type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Apellidos</label>
-                    <input type="text" class="form-control" name="last_name"/>
-                    <span class="invalid-feedback" role="alert"></span>
-                </div>
-                <div class="form-group">
-                    <button id="btn-save" type="button" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
+            </div>
         </div>
         <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

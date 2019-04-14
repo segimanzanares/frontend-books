@@ -7,53 +7,63 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
     </head>
     <body>
-        <h1>Crear libro</h1>
-        <div>
-            <form id="form-book" action="/books/form.php" method="POST">
-                <div class="alert alert-danger" style="display: none;"></div>
-                <input type="hidden" name="action" value="store"/>
-                <div class="form-group">
-                    <label class="control-label">Título</label>
-                    <input type="text" class="form-control" name="title" autofocus/>
-                    <span class="invalid-feedback" role="alert"></span>
+        <div class="container">
+             <div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="card mt-5">
+                        <div class="card-header">
+                            <h5 class="card-title">Crear libro</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="form-book" action="/books/form.php" method="POST">
+                                <div class="alert alert-danger" style="display: none;"></div>
+                                <input type="hidden" name="action" value="store"/>
+                                <div class="form-group">
+                                    <label class="control-label">Título</label>
+                                    <input type="text" class="form-control" name="title" autofocus/>
+                                    <span class="invalid-feedback" role="alert"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Autor</label>
+                                    <select class="form-control" name="author">
+                                        <?php
+                                        foreach ($authors as $author) {
+                                            ?>
+                                            <option value="<?= $author->id ?>"><?= $author->first_name . ' ' . $author->last_name ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                    <span class="invalid-feedback" role="alert"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Editorial</label>
+                                    <input type="text" class="form-control" name="publisher"/>
+                                    <span class="invalid-feedback" role="alert"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Fecha de publicación</label>
+                                    <input type="text" class="form-control datepicker" name="published_date"/>
+                                    <span class="invalid-feedback" role="alert"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Descripción</label>
+                                    <textarea class="form-control" name="description"></textarea>
+                                    <span class="invalid-feedback" role="alert"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Idioma</label>
+                                    <input type="text" class="form-control" name="language" maxlength="2"/>
+                                    <span class="invalid-feedback" role="alert"></span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <button id="btn-save" type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Autor</label>
-                    <select class="form-control" name="author">
-                        <?php
-                        foreach ($authors as $author) {
-                            ?>
-                            <option value="<?= $author->id ?>"><?= $author->first_name . ' ' . $author->last_name ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                    <span class="invalid-feedback" role="alert"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Editorial</label>
-                    <input type="text" class="form-control" name="publisher"/>
-                    <span class="invalid-feedback" role="alert"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Fecha de publicación</label>
-                    <input type="text" class="form-control datepicker" name="published_date"/>
-                    <span class="invalid-feedback" role="alert"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Descripción</label>
-                    <textarea class="form-control" name="description"></textarea>
-                    <span class="invalid-feedback" role="alert"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Idioma</label>
-                    <input type="text" class="form-control" name="language" maxlength="2"/>
-                    <span class="invalid-feedback" role="alert"></span>
-                </div>
-                <div class="form-group">
-                    <button id="btn-save" type="button" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
+            </div>
         </div>
         <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
