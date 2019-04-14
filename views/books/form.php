@@ -10,6 +10,9 @@
         <div class="container">
              <div class="row mb-2">
                 <div class="col-md-12">
+                    <?php
+                    include '../views/navbar.php';
+                    ?>
                     <div class="card mt-5">
                         <div class="card-header">
                             <h5 class="card-title">Crear libro</h5>
