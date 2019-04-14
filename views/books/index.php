@@ -7,6 +7,7 @@
     </head>
     <body>
         <h1>Listado de libros</h1>
+        <a href="/books/form.php" class="btn btn-primary">Crear libro</a>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -23,7 +24,7 @@
                     ?>
                     <tr>
                         <td><?= $book->title ?></td>
-                        <td><?= $book->_author->first_name ?></td>
+                        <td><?= $book->_author->first_name . ' ' . $book->_author->last_name ?></td>
                         <td><?= $book->publisher ?></td>
                         <td><?= $book->published_date ?></td>
                         <td><?= $book->language ?></td>
