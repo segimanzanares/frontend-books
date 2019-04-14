@@ -7,6 +7,7 @@
     </head>
     <body>
         <h1>Listado de autores</h1>
+        <a href="/authors/form.php" class="btn btn-primary">Crear autor</a>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
