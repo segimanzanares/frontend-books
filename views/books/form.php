@@ -60,6 +60,7 @@
                         </div>
                         <div class="card-footer">
                             <button id="btn-save" type="button" class="btn btn-primary">Guardar</button>
+                            <a href="/books/index.php" class="btn btn-secondary">Volver al listado</a>
                         </div>
                     </div>
                 </div>
