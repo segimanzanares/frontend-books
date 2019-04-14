@@ -56,17 +56,22 @@
                                                 .append('<strong>' + error.response.data.error.fields[key][0] + '</strong>');
                                     }
                                 }
-                                //toastr['error']("Algunos datos del usuario son incorrectos.");
+                                form.find('.alert-danger')
+                                    .html('<strong>Algunos datos son incorrectos.</strong>')
+                                    .show();
                             }
                         }
                         else {
-                            //toastr['error'](error.response.data.message);
+                            form.find('.alert-danger')
+                                    .html('<strong>' + error.response.data.error.description + '</strong>')
+                                    .show();
                         }
                     });
                 });
             });
             function clearErrors() {
-                $('#form-author').find('input')
+                $('#form-author').find('.alert-danger').hide()
+                        .parent().find('input')
                         .removeClass('is-invalid')
                         .parent().find('.invalid-feedback')
                         .html('');

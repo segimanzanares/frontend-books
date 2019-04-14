@@ -10,6 +10,7 @@
         <h1>Crear libro</h1>
         <div>
             <form id="form-book" action="/books/form.php" method="POST">
+                <div class="alert alert-danger" style="display: none;"></div>
                 <input type="hidden" name="action" value="store"/>
                 <div class="form-group">
                     <label class="control-label">Título</label>
@@ -91,17 +92,22 @@
                                                 .append('<strong>' + error.response.data.error.fields[key][0] + '</strong>');
                                     }
                                 }
-                                //toastr['error']("Algunos datos del usuario son incorrectos.");
+                                form.find('.alert-danger')
+                                    .html('<strong>Algunos datos son incorrectos.</strong>')
+                                    .show();
                             }
                         }
                         else {
-                            //toastr['error'](error.response.data.message);
+                            form.find('.alert-danger')
+                                    .html('<strong>' + error.response.data.error.description + '</strong>')
+                                    .show();
                         }
                     });
                 });
             });
             function clearErrors() {
-                $('#form-book').find('input,textarea')
+                $('#form-book').find('.alert-danger').hide()
+                        .parent().find('input,textarea')
                         .removeClass('is-invalid')
                         .parent().find('.invalid-feedback')
                         .html('');
