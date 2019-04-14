@@ -41,11 +41,10 @@
                     });
                     axios.post('/authors/form.php', data)
                     .then(function(response) {
-                        console.log(response);
                         window.location.href = '/authors/index.php';
                     })
                     .catch(function(error) {
-                        console.log(error.response);
+                        clearErrors();
                         if (error.response.status === 400) {
                             if (error.response.data.error !== void 0) {
                                 for (var key in error.response.data.error.fields) {
@@ -66,6 +65,12 @@
                     });
                 });
             });
+            function clearErrors() {
+                $('#form-author').find('input')
+                        .removeClass('is-invalid')
+                        .parent().find('.invalid-feedback')
+                        .html('');
+            }
         </script>
     </body>
 </html>

@@ -79,6 +79,7 @@
                         window.location.href = '/books/index.php';
                     })
                     .catch(function(error) {
+                        clearErrors();
                         if (error.response.status === 400) {
                             if (error.response.data.error !== void 0) {
                                 for (var key in error.response.data.error.fields) {
@@ -99,6 +100,12 @@
                     });
                 });
             });
+            function clearErrors() {
+                $('#form-book').find('input,textarea')
+                        .removeClass('is-invalid')
+                        .parent().find('.invalid-feedback')
+                        .html('');
+            }
         </script>
     </body>
 </html>
