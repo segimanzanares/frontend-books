@@ -78,8 +78,10 @@
         <script src="/assets/js/app.js"></script>
         <script type="text/javascript">
             $(function() {
+                // Acción que se ejecuta al hacer clic en el botón Guardar
                 $('#btn-save').click(function(e) {
                     e.preventDefault();
+                    // Ejecutar función save y al finalizar redireccionar al índice
                     save($('#form-book'), function() {
                         window.location.href = '/books/index.php';
                     });
