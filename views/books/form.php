@@ -75,57 +75,16 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/js/app.js"></script>
         <script type="text/javascript">
             $(function() {
-                var now = new Date();
-                $('.datepicker').datepicker({
-                    format: 'yyyy-mm-dd',
-                    endDate: now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate()
-                });
                 $('#btn-save').click(function(e) {
                     e.preventDefault();
-                    var data = {};
-                    var form = $('#form-book');
-                    form.serializeArray().forEach(function(item) {
-                        data[item.name] = item.value;
-                    });
-                    axios.post('/books/form.php', data)
-                    .then(function(response) {
+                    save($('#form-book'), function() {
                         window.location.href = '/books/index.php';
-                    })
-                    .catch(function(error) {
-                        clearErrors();
-                        if (error.response.status === 400) {
-                            if (error.response.data.error !== void 0) {
-                                for (var key in error.response.data.error.fields) {
-                                    if (error.response.data.error.fields.hasOwnProperty(key)) {
-                                        //vm.modal.errors[key] = error.response.data.errors[key];
-                                        form.find('input[name=' + key + ']')
-                                                .addClass('is-invalid')
-                                                .parent().find('.invalid-feedback')
-                                                .append('<strong>' + error.response.data.error.fields[key][0] + '</strong>');
-                                    }
-                                }
-                                form.find('.alert-danger')
-                                    .html('<strong>Algunos datos son incorrectos.</strong>')
-                                    .show();
-                            }
-                        }
-                        else {
-                            form.find('.alert-danger')
-                                    .html('<strong>' + error.response.data.error.description + '</strong>')
-                                    .show();
-                        }
                     });
                 });
             });
-            function clearErrors() {
-                $('#form-book').find('.alert-danger').hide()
-                        .parent().find('input,textarea')
-                        .removeClass('is-invalid')
-                        .parent().find('.invalid-feedback')
-                        .html('');
-            }
         </script>
     </body>
 </html>
